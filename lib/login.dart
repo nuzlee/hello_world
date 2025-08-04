@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:hello_world/dashboard.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
-
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
@@ -22,7 +20,7 @@ class _LoginPageState extends State<LoginPage> {
 
       // Navigate to dashboard after successful login
       Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => DashboardPage(email: email)),
+        MaterialPageRoute(builder: (context) => DashboardPage(email: '',)),
       );
     }
   }

@@ -1,129 +1,45 @@
 import 'package:flutter/material.dart';
-import 'package:hello_world/login.dart';
+import 'package:hello_world/screens/home.dart';
+import 'package:hello_world/screens/profile.dart';
+import 'package:hello_world/screens/settings.dart';
 
-class DashboardPage extends StatelessWidget {
+class DashboardPage extends StatefulWidget {
   final String email;
+  
+  const DashboardPage({Key? key, required this.email}) : super(key: key);
+  
+  @override
+  State<DashboardPage> createState() => _DashboardPageState();
+}
 
-  const DashboardPage({super.key, required this.email});
+class _DashboardPageState extends State<DashboardPage> {
+  int _currentIndex = 0;
+
+  final List<Widget> _pages = [HomeScreen(), ProfileScreen(), SettingsScreen()];
+
+  final List<String> _title = ['Home Page', 'Profile Page', 'Settings Page'];
 
   @override
   Widget build(BuildContext context) {
+    // TODO: implement build
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Dashboard'),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.logout),
-            onPressed: () {
-              Navigator.of(context).pushAndRemoveUntil(
-                MaterialPageRoute(builder: (context) => LoginPage()),
-                (route) => false,
-              );
-            },
+      appBar: AppBar(title: Text(_title[_currentIndex].toString())),
+      body: _pages[_currentIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        onTap:
+            (index) => setState(() {
+              _currentIndex = index;
+            }),
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Settings',
           ),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Welcome to Dashboard!',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-            SizedBox(height: 16),
-            Text(
-              'Logged in as: $email',
-              style: Theme.of(context).textTheme.bodyLarge,
-            ),
-            SizedBox(height: 32),
-            Card(
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Quick Actions',
-                      style: Theme.of(context).textTheme.titleLarge,
-                    ),
-                    SizedBox(height: 16),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: ElevatedButton(
-                            onPressed: () {
-                              // Add functionality here
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(content: Text('Action 1 clicked')),
-                              );
-                            },
-                            child: Text('Action 1'),
-                          ),
-                        ),
-                        SizedBox(width: 8),
-                        Expanded(
-                          child: ElevatedButton(
-                            onPressed: () {
-                              // Add functionality here
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(content: Text('Action 2 clicked')),
-                              );
-                            },
-                            child: Text('Action 2'),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            SizedBox(height: 16),
-            Card(
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Statistics',
-                      style: Theme.of(context).textTheme.titleLarge,
-                    ),
-                    SizedBox(height: 16),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        _buildStatCard('Total Users', '1,234'),
-                        _buildStatCard('Active Sessions', '56'),
-                        _buildStatCard('Revenue', '\$12,345'),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildStatCard(String title, String value) {
-    return Column(
-      children: [
-        Text(
-          value,
-          style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-            color: Colors.blue,
-          ),
-        ),
-        SizedBox(height: 4),
-        Text(title, style: TextStyle(fontSize: 12, color: Colors.grey[600])),
-      ],
     );
   }
 }

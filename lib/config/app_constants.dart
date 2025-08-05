@@ -2,7 +2,7 @@ class AppConstants {
   // Define your API URL here
 
   static const String baseUrl = 'http://127.0.0.1:8000';
-  
+
   static const String clientId = 'podlatihan';
   static const String clientSecret = 'ncypeFkaHuq0xEuaIAq77gDiJthEKkLh';
 

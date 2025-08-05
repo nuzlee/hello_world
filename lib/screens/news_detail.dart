@@ -6,11 +6,11 @@ class NewsDetailScreen extends StatelessWidget {
   final String? content;
 
   const NewsDetailScreen({
-    Key? key,
+    super.key,
     required this.title,
     required this.subtitle,
     this.content,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -177,7 +177,7 @@ class NewsDetailScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 16),
                   // Related articles list
-                  Container(
+                  SizedBox(
                     height: 120,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,

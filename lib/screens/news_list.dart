@@ -63,6 +63,8 @@ class NewsListScreen extends StatelessWidget {
     },
   ];
 
+  NewsListScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -154,11 +156,10 @@ class NewsListScreen extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder:
-                                (context) => NewsDetailScreen(
-                                  title: news['title']!,
-                                  subtitle: news['subtitle']!,
-                                ),
+                            builder: (context) => NewsDetailScreen(
+                              title: news['title']!,
+                              subtitle: news['subtitle']!,
+                            ),
                           ),
                         );
                       },

@@ -6,6 +6,8 @@ import 'package:hello_world/services/user_storage_service.dart';
 import 'package:hello_world/login.dart';
 
 class DashboardPage extends StatefulWidget {
+  const DashboardPage({super.key});
+
   @override
   State<DashboardPage> createState() => _DashboardPageState();
 }

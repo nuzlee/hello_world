@@ -96,6 +96,8 @@ class CategoriesScreen extends StatelessWidget {
     {'title': 'Art', 'icon': Icons.palette, 'color': Colors.lime, 'count': 13},
   ];
 
+CategoriesScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

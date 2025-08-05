@@ -5,6 +5,8 @@ import 'package:hello_world/screens/categories.dart';
 import 'dart:async';
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }

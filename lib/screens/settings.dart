@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hello_world/login.dart';
+import 'package:hello_world/screens/education.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -16,10 +16,15 @@ class SettingsScreen extends StatelessWidget {
               SizedBox(height: 16),
               _buildSection([
                 _buildTile(Icons.person, 'Account', () {}),
-                _buildTile(Icons.lock, 'Privacy', () {}),
+                _buildTile(Icons.person_4, 'Education', () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => EducationScreen()),
+                  );
+                }),
               ]),
               SizedBox(height: 32),
               _buildSection([_buildTile(Icons.language, 'Language', () {})]),
+              _buildTile(Icons.lock, 'Privacy', () {}),
               SizedBox(height: 32),
               _buildSection([
                 _buildTile(Icons.info, 'About', () {}),

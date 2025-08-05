@@ -125,10 +125,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   margin: EdgeInsets.symmetric(horizontal: 4),
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color:
-                        _currentPage == index
-                            ? Colors.blue
-                            : Colors.grey.withOpacity(0.4),
+                    color: _currentPage == index
+                        ? Colors.blue
+                        : Colors.grey.withOpacity(0.4),
                   ),
                 ),
               ),
@@ -180,10 +179,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       mainAxisSpacing: 12,
                       childAspectRatio: 0.9,
                     ),
-                    itemCount:
-                        categories.length > 4
-                            ? 4
-                            : categories.length, // Show only first 4 items
+                    itemCount: categories.length > 8
+                        ? 8
+                        : categories.length, // Show only first 4 items
                     itemBuilder: (context, index) {
                       final category = categories[index];
                       return InkWell(
@@ -287,10 +285,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   ListView.builder(
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
-                    itemCount:
-                        newsList.length > 4
-                            ? 4
-                            : newsList.length, // Show only first 4 items
+                    itemCount: newsList.length > 4
+                        ? 4
+                        : newsList.length, // Show only first 4 items
                     itemBuilder: (context, index) {
                       final news = newsList[index];
                       return Padding(
@@ -306,11 +303,10 @@ class _HomeScreenState extends State<HomeScreen> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder:
-                                      (context) => NewsDetailScreen(
-                                        title: news['title']!,
-                                        subtitle: news['subtitle']!,
-                                      ),
+                                  builder: (context) => NewsDetailScreen(
+                                    title: news['title']!,
+                                    subtitle: news['subtitle']!,
+                                  ),
                                 ),
                               );
                             },
